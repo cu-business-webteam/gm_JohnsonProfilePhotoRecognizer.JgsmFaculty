@@ -37,14 +37,6 @@ namespace Johnson.ProfilePhotoRecognizer.JgsmFaculty.Configuration {
 			}
 		}
 
-		public System.String NetIdExpressionName {
-			get {
-				return ( this[ "netIdExpressionName" ] as System.String );
-			}
-			set {
-				this[ "netIdExpressionName" ] = value;
-			}
-		}
 		public System.String NetIdExpression {
 			get {
 				return ( this[ "netIdExpression" ] as System.String );

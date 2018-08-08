@@ -31,7 +31,6 @@ namespace Johnson.ProfilePhotoRecognizer.JgsmFaculty {
 			var section = Configuration.FileRecognizerConfigurationSection.GetSection();
 			var element = section.Recognizer;
 			var expression = element.NetIdExpression;
-			var expressionName = element.NetIdExpressionName;
 
 			return System.Text.RegularExpressions.Regex.IsMatch( fileNameWithoutExtension, expression, System.Text.RegularExpressions.RegexOptions.Singleline | System.Text.RegularExpressions.RegexOptions.IgnoreCase )
 				? System.IO.Path.Combine( element.Destination, fileName )
