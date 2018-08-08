@@ -6,7 +6,7 @@ namespace Johnson.ProfilePhotoRecognizer.JgsmFaculty.Configuration {
 	public sealed class FileRecognizerConfigurationSection : System.Configuration.ConfigurationSection {
 
 		#region fields
-		public const System.String DefaultSectionName = "johnson.execEd.fileRecognizer";
+		public const System.String DefaultSectionName = "johnson.jgsmFaculty.fileRecognizer";
 		#endregion fields
 
 
