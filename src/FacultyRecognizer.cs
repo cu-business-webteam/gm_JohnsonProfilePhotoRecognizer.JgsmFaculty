@@ -31,9 +31,19 @@ namespace Johnson.ProfilePhotoRecognizer.JgsmFaculty {
 			var section = Configuration.FileRecognizerConfigurationSection.GetSection();
 			var element = section.Recognizer;
 			var expression = element.NetIdExpression;
+			var opt = System.Text.RegularExpressions.RegexOptions.Singleline | System.Text.RegularExpressions.RegexOptions.IgnoreCase;
 
-			return System.Text.RegularExpressions.Regex.IsMatch( fileNameWithoutExtension, expression, System.Text.RegularExpressions.RegexOptions.Singleline | System.Text.RegularExpressions.RegexOptions.IgnoreCase )
-				? System.IO.Path.Combine( element.Destination, fileName )
+			if ( !System.Text.RegularExpressions.Regex.IsMatch( fileNameWithoutExtension, expression, opt ) ) {
+				return null;
+			}
+
+			var netId = System.Text.RegularExpressions.Regex.Match( fileNameWithoutExtension, expression, opt ).Groups[ element.NetIdCaptureName ].Value;
+			if ( !myNetIdList.Contains( netId, System.StringComparer.OrdinalIgnoreCase ) ) {
+				return null;
+			}
+
+			return System.Text.RegularExpressions.Regex.IsMatch( fileNameWithoutExtension, expression, opt )
+				? System.IO.Path.Combine( element.Destination, fileNameWithoutExtension + System.IO.Path.GetExtension( fileName ) )
 				: null
 			;
 		}

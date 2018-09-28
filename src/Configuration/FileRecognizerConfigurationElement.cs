@@ -43,6 +43,17 @@ namespace Johnson.ProfilePhotoRecognizer.JgsmFaculty.Configuration {
 			}
 		}
 
+		[System.IO.IODescription( "The name of the capture group containing the NetID." )]
+		[System.Configuration.ConfigurationProperty( "netIdCaptureName", IsRequired = true, IsKey = false )]
+		public System.String NetIdCaptureName {
+			get {
+				return ( this[ "netIdCaptureName" ] as System.String ).TrimToNull();
+			}
+			set {
+				this[ "netIdCaptureName" ] = value.TrimToNull();
+			}
+		}
+
 		[System.IO.IODescription( "The regular expression for isolataing the NetId from the file name." )]
 		[System.Configuration.ConfigurationProperty( "netIdExpression", IsRequired = true, IsKey = false )]
 		public System.String NetIdExpression {
